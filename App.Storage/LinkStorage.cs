@@ -36,6 +36,11 @@ namespace App.Storage
             throw new NotImplementedException();
         }
 
+        public bool Remove(IList<Guid> ids)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool Update(Guid id, IEntryConfig config)
         {
             throw new NotImplementedException();
