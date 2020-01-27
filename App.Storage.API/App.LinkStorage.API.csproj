@@ -46,9 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FilterBy.cs" />
     <Compile Include="IEntry.cs" />
     <Compile Include="IEntryConfig.cs" />
-    <Compile Include="IStorage.cs" />
+    <Compile Include="ILinkStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

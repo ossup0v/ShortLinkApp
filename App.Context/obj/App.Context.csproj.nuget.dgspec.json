@@ -13,8 +13,8 @@
         "frameworks": {
           "net472": {
             "projectReferences": {
-              "E:\\GitRepos\\ShortLinkApp\\App.Storage.API\\App.Storage.API.csproj": {
-                "projectPath": "E:\\GitRepos\\ShortLinkApp\\App.Storage.API\\App.Storage.API.csproj"
+              "E:\\GitRepos\\ShortLinkApp\\App.Storage.API\\App.LinkStorage.API.csproj": {
+                "projectPath": "E:\\GitRepos\\ShortLinkApp\\App.Storage.API\\App.LinkStorage.API.csproj"
               }
             }
           }
@@ -88,12 +88,12 @@
         }
       }
     },
-    "E:\\GitRepos\\ShortLinkApp\\App.Storage.API\\App.Storage.API.csproj": {
+    "E:\\GitRepos\\ShortLinkApp\\App.Storage.API\\App.LinkStorage.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\GitRepos\\ShortLinkApp\\App.Storage.API\\App.Storage.API.csproj",
-        "projectName": "App.Storage.API",
-        "projectPath": "E:\\GitRepos\\ShortLinkApp\\App.Storage.API\\App.Storage.API.csproj"
+        "projectUniqueName": "E:\\GitRepos\\ShortLinkApp\\App.Storage.API\\App.LinkStorage.API.csproj",
+        "projectName": "App.LinkStorage.API",
+        "projectPath": "E:\\GitRepos\\ShortLinkApp\\App.Storage.API\\App.LinkStorage.API.csproj"
       },
       "frameworks": {
         "net472": {}

@@ -29,7 +29,7 @@
       "App.API/1.0.0": {
         "type": "project",
         "dependencies": {
-          "App.Storage.API": "1.0.0"
+          "App.LinkStorage.API": "1.0.0"
         },
         "compile": {
           "bin/placeholder/App.API.dll": {}
@@ -38,13 +38,13 @@
           "bin/placeholder/App.API.dll": {}
         }
       },
-      "App.Storage.API/1.0.0": {
+      "App.LinkStorage.API/1.0.0": {
         "type": "project",
         "compile": {
-          "bin/placeholder/App.Storage.API.dll": {}
+          "bin/placeholder/App.LinkStorage.API.dll": {}
         },
         "runtime": {
-          "bin/placeholder/App.Storage.API.dll": {}
+          "bin/placeholder/App.LinkStorage.API.dll": {}
         }
       }
     }
@@ -199,10 +199,10 @@
       "path": "../App.API/App.API.csproj",
       "msbuildProject": "../App.API/App.API.csproj"
     },
-    "App.Storage.API/1.0.0": {
+    "App.LinkStorage.API/1.0.0": {
       "type": "project",
-      "path": "../App.Storage.API/App.Storage.API.csproj",
-      "msbuildProject": "../App.Storage.API/App.Storage.API.csproj"
+      "path": "../App.Storage.API/App.LinkStorage.API.csproj",
+      "msbuildProject": "../App.Storage.API/App.LinkStorage.API.csproj"
     }
   },
   "projectFileDependencyGroups": {

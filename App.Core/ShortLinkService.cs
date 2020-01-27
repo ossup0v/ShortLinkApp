@@ -1,21 +1,22 @@
 ﻿using App.API;
 using App.Context;
-using App.Storage.API;
+using App.LinkStorage.API;
 using System;
+using System.Collections.Generic;
 
 namespace App.Core
 {
     //TODO logging
     public class ShortLinkService : IShortLinkService
     {
-        private IStorage _storage;
+        private ILinkStorage _storage;
 
-        public ShortLinkService(IStorage storage)
+        public ShortLinkService(ILinkStorage storage)
         {
             _storage = storage;
         }
 
-        public bool CreateShortLink(string fullLink)
+        public string CreateShortLink(string fullLink)
         {
             var ctx = UserContext.GetContext();
             if (ctx != default(UserContext))
@@ -35,7 +36,12 @@ namespace App.Core
             throw new NotImplementedException();
         }
 
-        private bool CreateShortLink(string fullLink, UserContext context)
+        public IList<string> FindAllShortLinks()
+        {
+            return new List<string> { "", "link1", "link2" };
+        }
+
+        private string CreateShortLink(string fullLink, UserContext context)
         {
             throw new NotImplementedException();
         }

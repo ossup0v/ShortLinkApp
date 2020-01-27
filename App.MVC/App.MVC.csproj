@@ -48,6 +48,9 @@
     <Reference Include="Autofac, Version=4.9.4.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.4.9.4\lib\net45\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNetCore.Authentication.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNetCore.Authentication.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Authentication.Abstractions.dll</HintPath>
     </Reference>
@@ -240,6 +243,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Autofac\Autofac.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -282,6 +286,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\ListShortLinks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -304,6 +309,18 @@
     <ProjectReference Include="..\App.API\App.API.csproj">
       <Project>{142FF956-8EE9-4634-B89A-A575105001E1}</Project>
       <Name>App.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\App.Core\App.Core.csproj">
+      <Project>{81c5209e-558b-45fe-a098-da9e7021e842}</Project>
+      <Name>App.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\App.Storage.API\App.LinkStorage.API.csproj">
+      <Project>{ada5496d-0b9a-4d84-914e-1f4a728af8d7}</Project>
+      <Name>App.LinkStorage.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\App.Storage\App.LinkStorage.Core.csproj">
+      <Project>{bd80ea9b-ee2a-4d38-84b4-22646059a014}</Project>
+      <Name>App.LinkStorage.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

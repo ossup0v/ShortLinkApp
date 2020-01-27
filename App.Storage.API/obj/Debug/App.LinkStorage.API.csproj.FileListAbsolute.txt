@@ -1,0 +1,5 @@
+E:\GitRepos\ShortLinkApp\App.Storage.API\bin\Debug\App.Storage.API.dll.config
+E:\GitRepos\ShortLinkApp\App.Storage.API\bin\Debug\App.Storage.API.dll
+E:\GitRepos\ShortLinkApp\App.Storage.API\bin\Debug\App.Storage.API.pdb
+E:\GitRepos\ShortLinkApp\App.Storage.API\obj\Debug\App.Storage.API.dll
+E:\GitRepos\ShortLinkApp\App.Storage.API\obj\Debug\App.Storage.API.pdb

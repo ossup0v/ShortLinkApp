@@ -1,11 +1,11 @@
-﻿using App.Storage.API;
+﻿using App.LinkStorage.API;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Storage
+namespace App.LinkStorage
 {
     public class Entry : IEntry
     {

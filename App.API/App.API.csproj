@@ -57,9 +57,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\App.Storage.API\App.Storage.API.csproj">
+    <ProjectReference Include="..\App.Storage.API\App.LinkStorage.API.csproj">
       <Project>{ADA5496D-0B9A-4D84-914E-1F4A728AF8D7}</Project>
-      <Name>App.Storage.API</Name>
+      <Name>App.LinkStorage.API</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

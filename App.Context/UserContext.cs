@@ -11,10 +11,6 @@ namespace App.Context
 
         public UserContext()
         {
-            if (_context == null)
-            {
-                _context = new UserContext();
-            }
         }
 
         public static UserContext GetContext()

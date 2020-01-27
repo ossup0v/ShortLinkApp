@@ -12,6 +12,8 @@ namespace short_link_tasts
     {
         protected void Application_Start()
         {
+            Autofac.AutofacConfig.ConfigureContainer();
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

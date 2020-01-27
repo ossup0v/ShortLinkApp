@@ -82,7 +82,7 @@
   <ItemGroup>
     <Compile Include="LinkStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Утекн.cs" />
+    <Compile Include="Entry.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -93,9 +93,9 @@
       <Project>{142FF956-8EE9-4634-B89A-A575105001E1}</Project>
       <Name>App.API</Name>
     </ProjectReference>
-    <ProjectReference Include="..\App.Storage.API\App.Storage.API.csproj">
+    <ProjectReference Include="..\App.Storage.API\App.LinkStorage.API.csproj">
       <Project>{ADA5496D-0B9A-4D84-914E-1F4A728AF8D7}</Project>
-      <Name>App.Storage.API</Name>
+      <Name>App.LinkStorage.API</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

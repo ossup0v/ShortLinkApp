@@ -4,40 +4,51 @@ using System.Web.Mvc;
 
 namespace short_link_tasts.Controllers
 {
+    [RoutePrefix("home")]
     public class HomeController : Controller
     {
         //TODO logging
-        //private IShortLinkService _shortLinkService;
+        private IShortLinkService _shortLinkService;
 
-        //public HomeController(IShortLinkService shortLinkService)
-        //{
-        //    _shortLinkService = shortLinkService;
-        //}
-
-        [Route("/{link}")]
-        public string Do(string shortLink)
+        public HomeController(IShortLinkService shortLinkService)
         {
-            return "ewq";//_shortLinkService.FindFullLink(shortLink);
+            _shortLinkService = shortLinkService;
         }
 
-        [Route("")]
-        public bool Create(string link)
+        [Route("FindFullLink/{shortLink=default}")]
+        public string FindFullLink(string shortLink)
         {
-            return true;//_shortLinkService.CreateShortLink(link);
+            return _shortLinkService.FindFullLink(shortLink);
         }
 
+        [Route("CreateShortLink/{fullLink=default}")]
+        public string Create(string fullLink)
+        {
+            return _shortLinkService.CreateShortLink(fullLink);
+        }
+
+        [Route("ListShortLinks")]
+        public ActionResult ListShortLinks()
+        {
+            ViewBag.Links = _shortLinkService.FindAllShortLinks();
+            return View();
+        }
+
+        [Route("Index")]
         public ActionResult Index()
         {
             return View();
         }
 
+        [Route("About")]
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "https://vk.com";
 
             return View();
         }
 
+        [Route("Contact")]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

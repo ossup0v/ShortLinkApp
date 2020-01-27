@@ -1,4 +1,4 @@
-E:\GitRepos\ShortLinkApp\App.MVC\obj\Debug\App.MVC.csprojAssemblyReference.cache
+E:\GitRepos\ShortLinkApp\App.MVC\bin\mongocrypt.dll
 E:\GitRepos\ShortLinkApp\App.MVC\bin\short link tasts.dll.config
 E:\GitRepos\ShortLinkApp\App.MVC\bin\short link tasts.dll
 E:\GitRepos\ShortLinkApp\App.MVC\bin\short link tasts.pdb
@@ -53,6 +53,11 @@ E:\GitRepos\ShortLinkApp\App.MVC\bin\roslyn\VBCSCompiler.exe
 E:\GitRepos\ShortLinkApp\App.MVC\bin\roslyn\VBCSCompiler.exe.config
 E:\GitRepos\ShortLinkApp\App.MVC\bin\Antlr3.Runtime.dll
 E:\GitRepos\ShortLinkApp\App.MVC\bin\App.API.dll
+E:\GitRepos\ShortLinkApp\App.MVC\bin\App.Core.dll
+E:\GitRepos\ShortLinkApp\App.MVC\bin\App.Storage.API.dll
+E:\GitRepos\ShortLinkApp\App.MVC\bin\App.Storage.dll
+E:\GitRepos\ShortLinkApp\App.MVC\bin\Autofac.dll
+E:\GitRepos\ShortLinkApp\App.MVC\bin\Autofac.Integration.Mvc.dll
 E:\GitRepos\ShortLinkApp\App.MVC\bin\Microsoft.AspNetCore.Authentication.Abstractions.dll
 E:\GitRepos\ShortLinkApp\App.MVC\bin\Microsoft.AspNetCore.Authentication.Core.dll
 E:\GitRepos\ShortLinkApp\App.MVC\bin\Microsoft.AspNetCore.Authorization.dll
@@ -101,8 +106,26 @@ E:\GitRepos\ShortLinkApp\App.MVC\bin\System.Web.WebPages.Deployment.dll
 E:\GitRepos\ShortLinkApp\App.MVC\bin\System.Web.WebPages.dll
 E:\GitRepos\ShortLinkApp\App.MVC\bin\System.Web.WebPages.Razor.dll
 E:\GitRepos\ShortLinkApp\App.MVC\bin\WebGrease.dll
+E:\GitRepos\ShortLinkApp\App.MVC\bin\App.Context.dll
+E:\GitRepos\ShortLinkApp\App.MVC\bin\MongoDB.Driver.dll
+E:\GitRepos\ShortLinkApp\App.MVC\bin\MongoDB.Bson.dll
+E:\GitRepos\ShortLinkApp\App.MVC\bin\MongoDB.Driver.Core.dll
+E:\GitRepos\ShortLinkApp\App.MVC\bin\MongoDB.Libmongocrypt.dll
+E:\GitRepos\ShortLinkApp\App.MVC\bin\DnsClient.dll
+E:\GitRepos\ShortLinkApp\App.MVC\bin\SharpCompress.dll
+E:\GitRepos\ShortLinkApp\App.MVC\bin\Snappy.NET.dll
+E:\GitRepos\ShortLinkApp\App.MVC\bin\Crc32C.NET.dll
 E:\GitRepos\ShortLinkApp\App.MVC\bin\App.API.pdb
 E:\GitRepos\ShortLinkApp\App.MVC\bin\App.API.dll.config
+E:\GitRepos\ShortLinkApp\App.MVC\bin\App.Core.pdb
+E:\GitRepos\ShortLinkApp\App.MVC\bin\App.Core.dll.config
+E:\GitRepos\ShortLinkApp\App.MVC\bin\App.Storage.API.pdb
+E:\GitRepos\ShortLinkApp\App.MVC\bin\App.Storage.API.dll.config
+E:\GitRepos\ShortLinkApp\App.MVC\bin\App.Storage.pdb
+E:\GitRepos\ShortLinkApp\App.MVC\bin\App.Storage.dll.config
+E:\GitRepos\ShortLinkApp\App.MVC\bin\Autofac.pdb
+E:\GitRepos\ShortLinkApp\App.MVC\bin\Autofac.xml
+E:\GitRepos\ShortLinkApp\App.MVC\bin\Autofac.Integration.Mvc.xml
 E:\GitRepos\ShortLinkApp\App.MVC\bin\Microsoft.AspNetCore.Authentication.Abstractions.xml
 E:\GitRepos\ShortLinkApp\App.MVC\bin\Microsoft.AspNetCore.Authentication.Core.xml
 E:\GitRepos\ShortLinkApp\App.MVC\bin\Microsoft.AspNetCore.Authorization.xml
@@ -147,9 +170,14 @@ E:\GitRepos\ShortLinkApp\App.MVC\bin\System.Web.WebPages.Razor.xml
 E:\GitRepos\ShortLinkApp\App.MVC\bin\Newtonsoft.Json.xml
 E:\GitRepos\ShortLinkApp\App.MVC\bin\Antlr3.Runtime.pdb
 E:\GitRepos\ShortLinkApp\App.MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\GitRepos\ShortLinkApp\App.MVC\bin\App.Context.pdb
+E:\GitRepos\ShortLinkApp\App.MVC\bin\MongoDB.Driver.xml
+E:\GitRepos\ShortLinkApp\App.MVC\bin\MongoDB.Bson.xml
+E:\GitRepos\ShortLinkApp\App.MVC\bin\MongoDB.Driver.Core.xml
+E:\GitRepos\ShortLinkApp\App.MVC\bin\DnsClient.xml
+E:\GitRepos\ShortLinkApp\App.MVC\bin\Snappy.NET.xml
+E:\GitRepos\ShortLinkApp\App.MVC\bin\Crc32C.NET.xml
+E:\GitRepos\ShortLinkApp\App.MVC\obj\Debug\App.MVC.csprojAssemblyReference.cache
 E:\GitRepos\ShortLinkApp\App.MVC\obj\Debug\App.MVC.csproj.CopyComplete
 E:\GitRepos\ShortLinkApp\App.MVC\obj\Debug\short link tasts.dll
 E:\GitRepos\ShortLinkApp\App.MVC\obj\Debug\short link tasts.pdb
-E:\GitRepos\ShortLinkApp\App.MVC\bin\Autofac.dll
-E:\GitRepos\ShortLinkApp\App.MVC\bin\Autofac.pdb
-E:\GitRepos\ShortLinkApp\App.MVC\bin\Autofac.xml
