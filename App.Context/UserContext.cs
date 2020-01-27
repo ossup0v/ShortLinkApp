@@ -1,0 +1,33 @@
+﻿using System;
+using App.API;
+
+namespace App.Context
+{
+    //TODO logging
+    public class UserContext
+    {
+        private static UserContext _context;
+        public User Executor { get; private set; }
+
+        public UserContext()
+        {
+            if (_context == null)
+            {
+                _context = new UserContext();
+            }
+        }
+
+        public static UserContext GetContext()
+        {
+            if (_context == null)
+                return new UserContext();
+
+            return _context;
+        }
+
+        public void UpdateExecutor(User executor)
+        {
+            Executor = executor;
+        }
+    }
+}

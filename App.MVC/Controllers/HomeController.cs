@@ -6,23 +6,24 @@ namespace short_link_tasts.Controllers
 {
     public class HomeController : Controller
     {
-        private IService _service;
+        //TODO logging
+        //private IShortLinkService _shortLinkService;
 
-        public HomeController(IService service)
-        {
-            _service = service;
-        }
+        //public HomeController(IShortLinkService shortLinkService)
+        //{
+        //    _shortLinkService = shortLinkService;
+        //}
 
         [Route("/{link}")]
         public string Do(string shortLink)
         {
-            return _service.FindFullLink(shortLink);
+            return "ewq";//_shortLinkService.FindFullLink(shortLink);
         }
 
         [Route("")]
         public bool Create(string link)
         {
-            return _service.CreateShortLink(link);
+            return true;//_shortLinkService.CreateShortLink(link);
         }
 
         public ActionResult Index()

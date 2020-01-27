@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service.cs" />
+    <Compile Include="ShortLinkService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -56,6 +56,14 @@
     <ProjectReference Include="..\App.API\App.API.csproj">
       <Project>{142FF956-8EE9-4634-B89A-A575105001E1}</Project>
       <Name>App.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\App.Context\App.Context.csproj">
+      <Project>{7DDA038B-72EF-4F53-B6CD-FC604046EF6A}</Project>
+      <Name>App.Context</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\App.Storage.API\App.Storage.API.csproj">
+      <Project>{ADA5496D-0B9A-4D84-914E-1F4A728AF8D7}</Project>
+      <Name>App.Storage.API</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
