@@ -16,10 +16,9 @@ namespace short_link_tasts.Controllers
             _shortLinkService = shortLinkService;
         }
 
-        [Route("~/find")]
+        [Route("FindFullLink")]
         public string FindFullLink(string token)
         {
-
             return _shortLinkService.FindFullLink(new ServiceURI { Token = token });
         }
 
@@ -36,25 +35,9 @@ namespace short_link_tasts.Controllers
             return View();
         }
 
-        [Route("Index")]
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         [Route("About")]
         public ActionResult About()
         {
-            ViewBag.Message = "https://vk.com";
-
-            return View();
-        }
-
-        [Route("Contact")]
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

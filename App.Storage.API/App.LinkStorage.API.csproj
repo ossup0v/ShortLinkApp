@@ -51,10 +51,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entry.cs" />
-    <Compile Include="EntryConfig.cs" />
     <Compile Include="FilterBy.cs" />
     <Compile Include="IEntry.cs" />
-    <Compile Include="IEntryConfig.cs" />
     <Compile Include="ILinkStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StorageURI.cs" />

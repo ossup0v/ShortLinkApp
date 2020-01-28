@@ -17,9 +17,9 @@ namespace short_link_tasts
             routes.MapMvcAttributeRoutes();
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "About", id = UrlParameter.Optional }
+                "Default",                                              
+                "{controller}/{action}/{id}",                           
+                new { controller = "Home", action = "About", id = "" }  
             );
         }
     }
