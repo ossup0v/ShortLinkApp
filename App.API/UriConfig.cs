@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.LinkStorage.API
+namespace App.API
 {
-    public interface IEntryConfig
+    public class UriConfig
     {
-        object Data { get; set; }
+        public string BASE_URI = "localhost/";
     }
 }

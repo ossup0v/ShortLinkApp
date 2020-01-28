@@ -10,15 +10,15 @@ namespace App.API
         /// </summary>
         /// <param name="shortLink"></param>
         /// <returns>Full link</returns>
-        string FindFullLink(string shortLink);
+        string FindFullLink(ServiceURI ServiceUri);
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="fullLink"></param>
         /// <returns>short link</returns>
-        string CreateShortLink(string fullLink);
+        string CreateShortLink(ServiceURI ServiceUri);
 
-        IList<string> FindAllShortLinks();
+        IList<(string, int)> FindAllShortLinks();
     }
 }

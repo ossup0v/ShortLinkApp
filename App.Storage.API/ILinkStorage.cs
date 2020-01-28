@@ -7,7 +7,7 @@ namespace App.LinkStorage.API
     //CRUD
     public interface ILinkStorage
     {
-        Guid Create(IEntryConfig config);
+        void Create(IEntry entry);
 
         /// <summary>
         /// Read all entries
@@ -17,7 +17,9 @@ namespace App.LinkStorage.API
 
         IList<IEntry> Read(FilterBy filterBy, string value);
 
-        bool Update(Guid id, IEntryConfig config);
+        void Update(string id, IEntry entry);
+        
+        void Update(string id, int timesClicked);
 
         bool Remove();
 

@@ -11,32 +11,34 @@ using System.ComponentModel;
 
 namespace App.LinkStorage
 {
-    //TODO logging
+    //ToDo: logging
     public class LinkStorage : ILinkStorage
     {
         private const string _URLDatabaseConnection = "mongodb://localhost:27017";
-        private const string _databaseName = "test";
-        private readonly string[] _filterString = new string[] { "id", "fullURL", "shortURL", "token", "clicked", "created", "creater"};
+        private const string _databaseName = "ShortLinkApp";
+        private readonly string[] _filterString = new string[] { "Id", "FullURL", "ShortURL", "Token", "Clicked", "Created", "Creater"};
         private MongoClient _client;
         private IMongoDatabase _database;
+        private IMongoCollection<BsonDocument> _checkCollection;
 
-        private IMongoCollection<BsonDocument> _collection { 
-            get 
-            { 
-                if (_collection != null) 
-                    return _collection; 
-                else return _database.GetCollection<BsonDocument>(_databaseName); 
-            } 
+        private IMongoCollection<BsonDocument> _collection
+        {
+            get
+            {
+                if (_checkCollection != null)
+                    return _checkCollection;
+                else 
+                    return _database.GetCollection<BsonDocument>(_databaseName);
+            }
 
-            set 
-            { _collection = value; } 
+            set
+            { _checkCollection = value; }
         }
 
-        public Guid Create(IEntryConfig config)
+        public void Create(IEntry entry)
         {
-            var document = config.ToBsonDocument();
+            var document = entry.ToBsonDocument();
             _collection.InsertOne(document);
-            return new Guid(document.ToBson());
         }
 
         public IList<IEntry> Read()
@@ -53,7 +55,7 @@ namespace App.LinkStorage
         public IList<IEntry> Read(FilterBy field, string value)
         {
             var docs = new List<IEntry>();
-            var filter = Builders<BsonDocument>.Filter.ElemMatch<BsonValue>(_filterString[(int)field], value);
+            var filter = Builders<BsonDocument>.Filter.AnyEq<BsonValue>(_filterString[(int)field], value);
             var documents = _collection.Find(filter).ToList();
             foreach (var document in documents)
             {
@@ -72,9 +74,18 @@ namespace App.LinkStorage
             throw new NotImplementedException();
         }
 
-        public bool Update(Guid id, IEntryConfig config)
+        public void Update(string id, IEntry config)
         {
-            throw new NotImplementedException();
+            var filter = Builders<BsonDocument>.Filter.Eq("Id", id);
+            var update = Builders<BsonDocument>.Update.Set("Uri", config.Uri);
+            _collection.UpdateOne(filter, update);
+        }
+
+        public void Update(string id, int timesClicked)
+        {
+            var filter = Builders<BsonDocument>.Filter.Eq("Id", id);
+            var update = Builders<BsonDocument>.Update.Set("Uri.Clicked", timesClicked);
+            _collection.UpdateOne(filter, update);
         }
 
         public LinkStorage()

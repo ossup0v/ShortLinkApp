@@ -107,8 +107,8 @@ E:\GitRepos\ShortLinkApp\App.MVC\bin\System.Web.WebPages.dll
 E:\GitRepos\ShortLinkApp\App.MVC\bin\System.Web.WebPages.Razor.dll
 E:\GitRepos\ShortLinkApp\App.MVC\bin\WebGrease.dll
 E:\GitRepos\ShortLinkApp\App.MVC\bin\App.Context.dll
-E:\GitRepos\ShortLinkApp\App.MVC\bin\MongoDB.Driver.dll
 E:\GitRepos\ShortLinkApp\App.MVC\bin\MongoDB.Bson.dll
+E:\GitRepos\ShortLinkApp\App.MVC\bin\MongoDB.Driver.dll
 E:\GitRepos\ShortLinkApp\App.MVC\bin\MongoDB.Driver.Core.dll
 E:\GitRepos\ShortLinkApp\App.MVC\bin\MongoDB.Libmongocrypt.dll
 E:\GitRepos\ShortLinkApp\App.MVC\bin\DnsClient.dll
@@ -171,8 +171,8 @@ E:\GitRepos\ShortLinkApp\App.MVC\bin\Newtonsoft.Json.xml
 E:\GitRepos\ShortLinkApp\App.MVC\bin\Antlr3.Runtime.pdb
 E:\GitRepos\ShortLinkApp\App.MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 E:\GitRepos\ShortLinkApp\App.MVC\bin\App.Context.pdb
-E:\GitRepos\ShortLinkApp\App.MVC\bin\MongoDB.Driver.xml
 E:\GitRepos\ShortLinkApp\App.MVC\bin\MongoDB.Bson.xml
+E:\GitRepos\ShortLinkApp\App.MVC\bin\MongoDB.Driver.xml
 E:\GitRepos\ShortLinkApp\App.MVC\bin\MongoDB.Driver.Core.xml
 E:\GitRepos\ShortLinkApp\App.MVC\bin\DnsClient.xml
 E:\GitRepos\ShortLinkApp\App.MVC\bin\Snappy.NET.xml

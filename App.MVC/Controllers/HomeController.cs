@@ -1,10 +1,11 @@
 ﻿using App.API;
+using System;
 using System.Web;
 using System.Web.Mvc;
 
 namespace short_link_tasts.Controllers
 {
-    [RoutePrefix("home")]
+    [RoutePrefix("Home")]
     public class HomeController : Controller
     {
         //TODO logging
@@ -15,16 +16,17 @@ namespace short_link_tasts.Controllers
             _shortLinkService = shortLinkService;
         }
 
-        [Route("FindFullLink/{shortLink=default}")]
-        public string FindFullLink(string shortLink)
+        [Route("~/find")]
+        public string FindFullLink(string token)
         {
-            return _shortLinkService.FindFullLink(shortLink);
+
+            return _shortLinkService.FindFullLink(new ServiceURI { Token = token });
         }
 
-        [Route("CreateShortLink/{fullLink=default}")]
+        [Route("CreateShortLink")]
         public string Create(string fullLink)
         {
-            return _shortLinkService.CreateShortLink(fullLink);
+            return _shortLinkService.CreateShortLink(new ServiceURI { FullURI = fullLink, Created = DateTime.Now});
         }
 
         [Route("ListShortLinks")]

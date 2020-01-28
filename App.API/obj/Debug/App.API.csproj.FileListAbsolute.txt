@@ -2,8 +2,10 @@ E:\GitRepos\ShortLinkApp\App.API\bin\Debug\App.API.dll.config
 E:\GitRepos\ShortLinkApp\App.API\bin\Debug\App.API.dll
 E:\GitRepos\ShortLinkApp\App.API\bin\Debug\App.API.pdb
 E:\GitRepos\ShortLinkApp\App.API\bin\Debug\App.Storage.API.dll
+E:\GitRepos\ShortLinkApp\App.API\bin\Debug\MongoDB.Bson.dll
 E:\GitRepos\ShortLinkApp\App.API\bin\Debug\App.Storage.API.pdb
 E:\GitRepos\ShortLinkApp\App.API\bin\Debug\App.Storage.API.dll.config
+E:\GitRepos\ShortLinkApp\App.API\bin\Debug\MongoDB.Bson.xml
 E:\GitRepos\ShortLinkApp\App.API\obj\Debug\App.API.csprojAssemblyReference.cache
 E:\GitRepos\ShortLinkApp\App.API\obj\Debug\App.API.csproj.CopyComplete
 E:\GitRepos\ShortLinkApp\App.API\obj\Debug\App.API.dll

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App.Storage.API;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,8 @@ namespace App.LinkStorage.API
 {
     public interface IEntry
     {
-        Guid Id { get; set; }
+        string Id { get; set; }
 
-        object Data { get; set; }
+        StorageURI Uri { get; set; }
     }
 }
