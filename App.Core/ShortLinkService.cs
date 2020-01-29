@@ -13,7 +13,9 @@ namespace App.Core
     {
         private ILinkStorage _storage;
         private static string _tokenDefault = "";
+        private static string _idDefault = "";
         private string _token = _tokenDefault;
+        private string _id = _idDefault;
 
         public ShortLinkService(ILinkStorage storage)
         {
@@ -23,15 +25,15 @@ namespace App.Core
         public string CreateShortLink(ServiceURI serviceUri)
         {
             //var ctx = UserContext.GetContext();
-            GenerateShortLink(serviceUri);
+            var storageUri = ToStorageURI(serviceUri);
+            GenerateShortLink(storageUri);
             //if (ctx != default(UserContext))
             //{
             //    return CreateShortLink(serviceUri, ctx);
             //}
-            var storageUri = ToStorageURI(serviceUri);
-            var entry = new Entry { Uri = storageUri, Id = storageUri.Token };
+            var entry = new Entry { Uri = storageUri, Id = storageUri.Id };
             _storage.Create(entry);
-            return serviceUri.ShortURI;
+            return storageUri.ShortURI;
         }
 
         //ToDo: use usercontext
@@ -50,7 +52,7 @@ namespace App.Core
             //{
             //    return FindFullLink(serviceUri, ctx);
             //}
-            var entry = _storage.Read(FilterBy.Id, serviceUri.Token).FirstOrDefault();
+            var entry = _storage.Read(FilterBy.UriToken, serviceUri.Token)?.FirstOrDefault();
             if (entry == null)
             {
                 return null;
@@ -65,7 +67,7 @@ namespace App.Core
         //ToDo: use usercontext
         private string FindFullLink(ServiceURI serviceUri, UserContext context)
         {
-            var entry = _storage.Read(FilterBy.Id, serviceUri.Token).FirstOrDefault();
+            var entry = _storage.Read(FilterBy.UriToken, serviceUri.Token).FirstOrDefault();
             var serviceResultUri = ToServiceURI(entry.Uri);
             var fullLink = serviceResultUri.FullURI;
             return fullLink;
@@ -94,29 +96,23 @@ namespace App.Core
             _storage.Remove(filter, value);
         }
 
-        private List<string> FindAllTokens()
+        private void GenerateShortLink(StorageURI storageUri)
         {
-            var entries = _storage.Read();
-            var tokens = new List<string>();
-            foreach (var entry in entries)
-            {
-                tokens.Add(entry.Uri.Token);
-            }
-            return tokens;
-        }
-
-        private void GenerateShortLink(ServiceURI serviceUri)
-        {
-            var tokens = FindAllTokens();
-            while (tokens.Exists(t => t == _token) || (_token == _tokenDefault))
+            var tokensAndIds = FindAllTokensAndIds();
+            while (tokensAndIds.Exists(t => t.Item1 == _token ) || (_token == _tokenDefault))
             {
                 GenerateToken();
+            } 
+            while (tokensAndIds.Exists(t => t.Item2 == _id) || (_id == _idDefault))
+            {
+                GenerateId();
             }
-            serviceUri.Token = _token;
-            serviceUri.ShortURI = new ServiceURI().Config.BASE_URI + _token;
+            storageUri.Token = _token;
+            storageUri.Id = _id;
+            storageUri.ShortURI = new ServiceURI().Config.BASE_URI + _token;
         }
 
-        private void GenerateToken()
+        private void GenerateId()
         {
             string urlsafe = string.Empty;
             Enumerable.Range(10, 8)
@@ -128,7 +124,23 @@ namespace App.Core
             {
                 temp += new Random().Next(0, 9);
             }
-            _token = temp.ToString().Substring(0, 24);
+            _id = temp.ToString().Substring(0, 24);
+        }
+
+        private void GenerateToken()
+        {
+            _token = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
+        }
+
+        private List<(string,string)> FindAllTokensAndIds()
+        {
+            var entries = _storage.Read();
+            var tokensAndIds = new List<(string, string)>();
+            foreach (var entry in entries)
+            {
+                tokensAndIds.Add((entry.Uri.Token, entry.Id));
+            }
+            return tokensAndIds;
         }
 
         private StorageURI ToStorageURI(ServiceURI serviceURI)
@@ -136,7 +148,7 @@ namespace App.Core
             if (serviceURI != null)
                 return new StorageURI
                 {
-                    Id = serviceURI.Id,
+                    Id = serviceURI?.Id.ToString(),
                     FullURI = serviceURI?.FullURI,
                     ShortURI = serviceURI?.ShortURI,
                     Token = serviceURI?.Token,
@@ -153,7 +165,7 @@ namespace App.Core
             if (storageURI != null)
                 return new ServiceURI
                 {
-                    Id = storageURI.Id,
+                    Id = new Guid(),
                     FullURI = storageURI?.FullURI,
                     ShortURI = storageURI?.ShortURI,
                     Token = storageURI?.Token,

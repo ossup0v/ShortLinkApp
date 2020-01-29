@@ -5,7 +5,7 @@ using System.Web.Mvc;
 
 namespace short_link_tasts.Controllers
 {
-    [RoutePrefix("Home")]
+    [Route("Home")]
     public class HomeController : Controller
     {
         //TODO logging
@@ -22,10 +22,17 @@ namespace short_link_tasts.Controllers
             return _shortLinkService.FindFullLink(new ServiceURI { Token = token });
         }
 
+        [Route("~/q")]
+        public RedirectResult RedirectToFullUri(string token)
+        {
+            var fullUri = _shortLinkService.FindFullLink(new ServiceURI { Token = token });
+            return new RedirectResult(fullUri);
+        }
+
         [Route("CreateShortLink")]
         public string Create(string fullLink)
         {
-            return _shortLinkService.CreateShortLink(new ServiceURI { FullURI = fullLink, Created = DateTime.Now});
+            return _shortLinkService.CreateShortLink(new ServiceURI { FullURI = fullLink, Created = DateTime.Now });
         }
 
         [Route("ListShortLinks")]
@@ -35,8 +42,8 @@ namespace short_link_tasts.Controllers
             return View();
         }
 
-        [Route("About")]
-        public ActionResult About()
+        [Route("Index")]
+        public ActionResult Index()
         {
             return View();
         }

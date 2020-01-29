@@ -19,7 +19,7 @@ namespace App.LinkStorage.API
 
         void Update(string id, IEntry entry);
         
-        void Update(string id, int timesClicked);
+        void Update(string token, int timesClicked);
 
         bool Remove();
 

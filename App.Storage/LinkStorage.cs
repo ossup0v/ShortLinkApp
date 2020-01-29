@@ -16,7 +16,7 @@ namespace App.LinkStorage
     {
         private const string _URLDatabaseConnection = "mongodb://localhost:27017";
         private const string _databaseName = "ShortLinkApp";
-        private readonly string[] _filterString = new string[] { "Id", "FullURL", "ShortURL", "Token", "Clicked", "Created", "Creater"};
+        private readonly string[] _filterString = new string[] { "Id", "Uri.FullURL", "Uri.ShortURL", "Uri.Token", "Uri.Clicked", "Uri.Created", "Uri.Creater"};
         private MongoClient _client;
         private IMongoDatabase _database;
         private IMongoCollection<BsonDocument> _checkCollection;
@@ -54,6 +54,8 @@ namespace App.LinkStorage
 
         public IList<IEntry> Read(FilterBy field, string value)
         {
+            if (value == null)
+                return null;
             var docs = new List<IEntry>();
             var filter = Builders<BsonDocument>.Filter.AnyEq<BsonValue>(_filterString[(int)field], value);
             var documents = _collection.Find(filter).ToList();
@@ -81,9 +83,9 @@ namespace App.LinkStorage
             _collection.UpdateOne(filter, update);
         }
 
-        public void Update(string id, int timesClicked)
+        public void Update(string token, int timesClicked)
         {
-            var filter = Builders<BsonDocument>.Filter.Eq("Id", id);
+            var filter = Builders<BsonDocument>.Filter.Eq("Uri.Token", token);
             var update = Builders<BsonDocument>.Update.Set("Uri.Clicked", timesClicked);
             _collection.UpdateOne(filter, update);
         }

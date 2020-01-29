@@ -11,7 +11,7 @@ namespace App.Storage.API
     [BsonIgnoreExtraElements]
     public class StorageURI
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public string FullURI { get; set; }
         public string ShortURI { get; set; }
         public string Token { get; set; }

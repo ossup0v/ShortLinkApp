@@ -4,12 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.UI.WebControls;
 
 namespace short_link_tasts
-{
+{   
     public class RouteConfig
     {
-
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
@@ -17,10 +17,10 @@ namespace short_link_tasts
             routes.MapMvcAttributeRoutes();
 
             routes.MapRoute(
-                "Default",                                              
-                "{controller}/{action}/{id}",                           
-                new { controller = "Home", action = "About", id = "" }  
-            );
+                name: "Default", 
+                url: "{controller}/{action}/{id}", 
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional 
+                });
         }
     }
 }

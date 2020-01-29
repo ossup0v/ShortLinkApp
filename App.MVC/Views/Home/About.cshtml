@@ -1,9 +1,4 @@
-﻿@{
-    ViewBag.Title = "About";
-}
-
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿<h3>@ViewBag.Message</h3>
 
 
 <!doctype html>
@@ -61,7 +56,7 @@
             <a class="FindFullLinkResult" href="url" id="FindFullLinkResult"></a>
         </div>
     </div>
-        
+
     <script>
         $(function () {
 
@@ -73,7 +68,7 @@
                 var tempString = $("#userToken").val();
                 var result = "https://localhost:44313/Home/FindFullLink?token=" + tempString.replace(/\s+/g, '');
                 $("#FindFullLinkResult").load(result);
-                $.get(result, function(data){      
+                $.get(result, function (data) {
                     $(".FindFullLinkResult").attr("href", data);
                 });
             });

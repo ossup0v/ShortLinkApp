@@ -8,6 +8,6 @@ namespace App.API
 {
     public class UriConfig
     {
-        public string BASE_URI = "localhost/";
+        public string BASE_URI = "https://localhost:44313/q?token=";
     }
 }

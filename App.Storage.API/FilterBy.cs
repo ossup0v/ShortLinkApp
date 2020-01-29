@@ -8,12 +8,12 @@ namespace App.Storage.API
 {
     public enum FilterBy
     {
-        Id = 0,
-        FullURI = 1,
-        ShortURI = 2,
-        Token = 3,
-        Clicked = 4,
-        Created = 5,
-        Creater = 6
+        EntryId = 0,
+        UriFullURI = 1,
+        UriShortURI = 2,
+        UriToken = 3,
+        UriClicked = 4,
+        UriCreated = 5,
+        UriCreater = 6
     }
 }
