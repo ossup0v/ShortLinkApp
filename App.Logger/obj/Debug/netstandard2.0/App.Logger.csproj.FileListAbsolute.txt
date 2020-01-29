@@ -1,8 +1,0 @@
-E:\GitRepos\ShortLinkApp\App.Logger\bin\Debug\netstandard2.0\App.Logger.deps.json
-E:\GitRepos\ShortLinkApp\App.Logger\bin\Debug\netstandard2.0\App.Logger.dll
-E:\GitRepos\ShortLinkApp\App.Logger\bin\Debug\netstandard2.0\App.Logger.pdb
-E:\GitRepos\ShortLinkApp\App.Logger\obj\Debug\netstandard2.0\App.Logger.csprojAssemblyReference.cache
-E:\GitRepos\ShortLinkApp\App.Logger\obj\Debug\netstandard2.0\App.Logger.AssemblyInfoInputs.cache
-E:\GitRepos\ShortLinkApp\App.Logger\obj\Debug\netstandard2.0\App.Logger.AssemblyInfo.cs
-E:\GitRepos\ShortLinkApp\App.Logger\obj\Debug\netstandard2.0\App.Logger.dll
-E:\GitRepos\ShortLinkApp\App.Logger\obj\Debug\netstandard2.0\App.Logger.pdb
