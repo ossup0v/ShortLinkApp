@@ -47,14 +47,15 @@
             });
 
             $("#CreateShortLink").click(function () {
-                var result = "https://localhost:44313/Home/CreateShortLink?fullLink=" + $("#userFullLink").val();
+                var tempString = $("#userFullLink").val();
+                var result = "https://localhost:44313/Home/CreateShortLink?fullLink=" + tempString.replace(/\s+/g, '');
                 $("#CreateShortLinkResult").load(result);
             });
         });
     </script>
 
     <div class="СontainerFindFullLink">
-        <input type="text" placeholder="Type short link" id="userShortLink">
+        <input type="text" placeholder="Type token" id="userToken">
         <button id="FindFullLink">Find full link</button>
         <div>
             <a class="FindFullLinkResult" href="url" id="FindFullLinkResult"></a>
@@ -69,7 +70,8 @@
             });
 
             $("#FindFullLink").click(function () {
-                var result = "https://localhost:44313/Home/FindFullLink?token=" + $("#userShortLink").val();
+                var tempString = $("#userToken").val();
+                var result = "https://localhost:44313/Home/FindFullLink?token=" + tempString.replace(/\s+/g, '');
                 $("#FindFullLinkResult").load(result);
                 $.get(result, function(data){      
                     $(".FindFullLinkResult").attr("href", data);
@@ -78,14 +80,6 @@
         });
     </script>
 
-    <script>
-        $("input")
-            .keyup(function () {
-                var value = $(this).val();
-                $("p").text(value);
-            })
-            .keyup();
-    </script>
 </body>
 </html>
 
