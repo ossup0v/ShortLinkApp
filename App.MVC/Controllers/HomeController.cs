@@ -5,7 +5,7 @@ using System.Web.Mvc;
 
 namespace short_link_tasts.Controllers
 {
-    [Route("Home")]
+    [RoutePrefix("Home")]
     public class HomeController : Controller
     {
         //TODO logging
