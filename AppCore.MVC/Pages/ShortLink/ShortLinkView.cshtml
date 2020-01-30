@@ -1,0 +1,82 @@
+﻿@page "/ShortLink"
+@model AppCore.MVC.ShortLinkViewModel
+@{
+    ViewData["Title"] = "ShortLinkView";
+
+}
+<h2>Example</h2>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+<body>
+
+    <table class="table table-bordered table-responsive table-hover">
+        <tr>
+            <th>Employee Id </th>
+            <th>Clicked</th>
+        </tr>
+        @foreach (var entry in Model.ListOfLinkAndClicked)
+        {
+            <tr>
+                <td>@entry.Item1</td>
+                <td>@entry.Item2</td>
+            </tr>
+        }
+    </table>
+
+    <div class="СontainerCreateShortLink">
+        <input type="text" placeholder="Type full link" id="userFullLink">
+        <button id="CreateShortLink">Create short link</button>
+        <div id="CreateShortLinkResult"></div>
+    </div>
+
+    <script>
+        $(function () {
+
+            $.ajaxSetup({
+                cache: false
+            });
+
+            $("#CreateShortLink").click(function () {
+                var tempString = $("#userFullLink").val();
+                var result = "https://localhost:44369/CreateShortLink?fullLink=" + tempString.replace(/\s+/g, '');
+                $("#CreateShortLinkResult").load(result);
+            });
+        });
+    </script>
+
+    <div class="СontainerFindFullLink">
+        <input type="text" placeholder="Type token" id="userToken">
+        <button id="FindFullLink">Find full link</button>
+        <div>
+            <a class="FindFullLinkResult" href="url" id="FindFullLinkResult"></a>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+
+            $.ajaxSetup({
+                cache: false
+            });
+
+            $("#FindFullLink").click(function () {
+                var tempString = $("#userToken").val();
+                var result = "https://localhost:44369/FindFullLink?token=" + tempString.replace(/\s+/g, '');
+                $("#FindFullLinkResult").load(result);
+                $.get(result, function (data) {
+                    $(".FindFullLinkResult").attr("href", data);
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+
+
