@@ -18,7 +18,7 @@ namespace AppCore.MVC
 
         public ObjectResult OnGet(string fullLink)
         {
-            return new ObjectResult( _shortLinkService.CreateShortLink(new ServiceURI { FullURI = fullLink, Created = DateTime.Now }));
+            return new ObjectResult(_shortLinkService.CreateShortLinkAsync(new ServiceURI { FullURI = fullLink, Created = DateTime.Now }).Result);
         }
     }
 }

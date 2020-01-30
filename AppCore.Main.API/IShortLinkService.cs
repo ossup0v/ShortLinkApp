@@ -1,5 +1,6 @@
 ﻿
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AppCore.Main.API
 {
@@ -12,6 +13,8 @@ namespace AppCore.Main.API
         /// <returns>Full link</returns>
         string FindFullLink(ServiceURI ServiceUri);
 
+        Task<string> FindFullLinkAsync(ServiceURI ServiceUri);
+
         /// <summary>
         /// 
         /// </summary>
@@ -19,6 +22,10 @@ namespace AppCore.Main.API
         /// <returns>short link</returns>
         string CreateShortLink(ServiceURI ServiceUri);
 
+        Task<string> CreateShortLinkAsync(ServiceURI ServiceUri);
+
         List<(string, int)> FindAllShortLinks();
+
+        Task<List<(string, int)>> FindAllShortLinksAsync();
     }
 }

@@ -20,7 +20,7 @@ namespace AppCore.MVC
         {
             var tempToken = token?.Split('/');
             var resultToken = tempToken?[(int)tempToken?.Length - 1].Split('=');
-            var obj = new ObjectResult(_shortLinkService.FindFullLink(new ServiceURI { Token = resultToken[resultToken.Length - 1] }));
+            var obj = new ObjectResult(_shortLinkService.FindFullLinkAsync(new ServiceURI { Token = resultToken[resultToken.Length - 1] }).Result);
             return obj;
         }
     }

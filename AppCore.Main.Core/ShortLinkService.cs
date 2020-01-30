@@ -5,6 +5,7 @@ using AppCore.Main.Defaults;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace AppCore.Main.Core
 {
@@ -22,6 +23,9 @@ namespace AppCore.Main.Core
             _storage = storage;
         }
 
+        #region API
+
+        //ToDo: use usercontext
         public string CreateShortLink(ServiceURI serviceUri)
         {
             //var ctx = UserContext.GetContext();
@@ -36,22 +40,9 @@ namespace AppCore.Main.Core
             return storageUri.ShortURI;
         }
 
-        //ToDo: use usercontext
-        private string CreateShortLink(ServiceURI serviceUri, UserContext context)
-        {
-            var storageUri = ToStorageURI(serviceUri);
-            var entry = new Entry { Uri = storageUri, Id = storageUri.Token };
-            _storage.Create(entry);
-            return serviceUri.ShortURI;
-        }
-
         public string FindFullLink(ServiceURI serviceUri)
         {
             var ctx = UserContext.GetContext();
-            //if (ctx != default(UserContext))
-            //{
-            //    return FindFullLink(serviceUri, ctx);
-            //}
             var entry = _storage.Read(FilterBy.UriToken, serviceUri.Token)?.FirstOrDefault();
             if (entry == null)
             {
@@ -60,15 +51,6 @@ namespace AppCore.Main.Core
             _storage.Update(serviceUri.Token, entry.Uri.Clicked + 1);
             var storageUri = entry?.Uri;
             var serviceResultUri = ToServiceURI(storageUri);
-            var fullLink = serviceResultUri.FullURI;
-            return fullLink;
-        }
-
-        //ToDo: use usercontext
-        private string FindFullLink(ServiceURI serviceUri, UserContext context)
-        {
-            var entry = _storage.Read(FilterBy.UriToken, serviceUri.Token).FirstOrDefault();
-            var serviceResultUri = ToServiceURI(entry.Uri);
             var fullLink = serviceResultUri.FullURI;
             return fullLink;
         }
@@ -85,6 +67,47 @@ namespace AppCore.Main.Core
             return result;
         }
 
+        #endregion
+
+        #region Async API
+
+        public async Task<string> CreateShortLinkAsync(ServiceURI serviceUri)
+        {
+            var storageUri = ToStorageURI(serviceUri);
+            GenerateShortLink(storageUri);
+            var entry = new Entry { Uri = storageUri, Id = storageUri.Id };
+            await _storage.CreateAsync(entry);
+            return storageUri.ShortURI;
+        }
+
+        public async Task<string> FindFullLinkAsync(ServiceURI serviceUri)
+        {
+            var entry = (await _storage.ReadAsync(FilterBy.UriToken, serviceUri.Token))?.FirstOrDefault();
+            if (entry == null)
+            {
+                return null;
+            }
+            _storage.Update(serviceUri.Token, entry.Uri.Clicked + 1);
+            var storageUri = entry?.Uri;
+            var serviceResultUri = ToServiceURI(storageUri);
+            var fullLink = serviceResultUri.FullURI;
+            return fullLink;
+        }
+
+        public async Task<List<(string, int)>> FindAllShortLinksAsync()
+        {
+            var entries = await _storage.ReadAsync();
+            var result = new List<(string, int)>();
+            foreach (var entry in entries)
+            {
+                var storageUri = entry.Uri;
+                result.Add((storageUri.ShortURI, storageUri.Clicked));
+            }
+            return result;
+        }
+
+        #endregion
+
         //ToDo: only admin have access to remove 
         public void Remove()
         {
@@ -99,10 +122,10 @@ namespace AppCore.Main.Core
         private void GenerateShortLink(StorageURI storageUri)
         {
             var tokensAndIds = FindAllTokensAndIds();
-            while (tokensAndIds.Exists(t => t.Item1 == _token ) || (_token == _tokenDefault))
+            while (tokensAndIds.Exists(t => t.Item1 == _token) || (_token == _tokenDefault))
             {
                 GenerateToken();
-            } 
+            }
             while (tokensAndIds.Exists(t => t.Item2 == _id) || (_id == _idDefault))
             {
                 GenerateId();
@@ -135,18 +158,18 @@ namespace AppCore.Main.Core
                 string temp = "";
                 for (int i = 0; i < _token.Length; i++)
                 {
-                   if (_token[i] == '+' || _token[i] == '?' || _token[i] == '=' || _token[i] == '/')
-                   {
+                    if (_token[i] == '+' || _token[i] == '?' || _token[i] == '=' || _token[i] == '/')
+                    {
                         temp += i.ToString();
                         continue;
-                   }
-                   temp += _token[i];
+                    }
+                    temp += _token[i];
                 }
                 _token = temp;
             }
         }
 
-        private List<(string,string)> FindAllTokensAndIds()
+        private List<(string, string)> FindAllTokensAndIds()
         {
             var entries = _storage.Read();
             var tokensAndIds = new List<(string, string)>();
@@ -187,7 +210,7 @@ namespace AppCore.Main.Core
                     Created = storageURI.Created,
                     Creater = new User { Credentials = new Credentials { Login = storageURI.Creater } }
                 };
-            else 
+            else
                 return new ServiceURI();
         }
     }

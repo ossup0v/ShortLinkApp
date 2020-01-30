@@ -12,7 +12,7 @@ namespace AppCore.MVC
     public class ShortLinkViewModel : PageModel
     {
         private IShortLinkService _shortLinkService;
-        public List<(string,int)> ListOfLinkAndClicked
+        public List<(string, int)> ListOfLinkAndClicked
         {
             get
             {
@@ -25,14 +25,9 @@ namespace AppCore.MVC
             _shortLinkService = shortLinkService;
         }
 
-        public string FindFullLink(string token)
+        private List<(string, int)> ListShortLinks()
         {
-            return _shortLinkService.FindFullLink(new ServiceURI { Token = token });
-        }
-
-        public List<(string,int)> ListShortLinks()
-        {
-            return _shortLinkService.FindAllShortLinks();
+            return _shortLinkService.FindAllShortLinksAsync().Result;
         }
 
         public void OnGet()
