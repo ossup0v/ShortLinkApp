@@ -84,10 +84,10 @@ namespace AppCore.Main.Core
         {
             var entry = (await _storage.ReadAsync(FilterBy.UriToken, serviceUri.Token))?.FirstOrDefault();
             if (entry == null)
-            {
+            {   
                 return null;
             }
-            _storage.Update(serviceUri.Token, entry.Uri.Clicked + 1);
+            await _storage.UpdateAsync(serviceUri.Token, entry.Uri.Clicked + 1);
             var storageUri = entry?.Uri;
             var serviceResultUri = ToServiceURI(storageUri);
             var fullLink = serviceResultUri.FullURI;
@@ -153,7 +153,7 @@ namespace AppCore.Main.Core
         private void GenerateToken()
         {
             _token = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
-            if (_token.Contains('+') || _token.Contains('?') || _token.Contains('='))
+            if (_token.Contains('+') || _token.Contains('?') || _token.Contains('=') || _token.Contains('/'))
             {
                 string temp = "";
                 for (int i = 0; i < _token.Length; i++)
