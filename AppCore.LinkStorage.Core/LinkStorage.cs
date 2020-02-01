@@ -18,16 +18,16 @@ namespace AppCore.LinkStorage.Core
         private readonly string[] _filterString = new string[] { "Id", "Uri.FullURL", "Uri.ShortURL", "Uri.Token", "Uri.Clicked", "Uri.Created", "Uri.Creater" };
         private MongoClient _client;
         private IMongoDatabase _database;
-        private IMongoCollection<BsonDocument> _checkCollection;
+        private IMongoCollection<IEntry> _checkCollection;
 
-        private IMongoCollection<BsonDocument> _collection
+        private IMongoCollection<IEntry> _collection
         {
             get
             {
                 if (_checkCollection != null)
                     return _checkCollection;
                 else
-                    return _database.GetCollection<BsonDocument>(_databaseName);
+                    return _database.GetCollection<IEntry>(_databaseName);
             }
 
             set
@@ -36,46 +36,35 @@ namespace AppCore.LinkStorage.Core
 
         public void Create(IEntry entry)
         {
-            var document = entry.ToBsonDocument();
-            _collection.InsertOne(document);
+            _collection.InsertOne(entry);
         }
 
         public IList<IEntry> Read()
         {
-            var docs = new List<IEntry>();
-            var documents = _collection.Find(new BsonDocument()).ToList();
-            foreach (var document in documents)
-            {
-                docs.Add(BsonSerializer.Deserialize<Entry>(document));
-            }
-            return docs;
+            var entries = _collection.Find(new BsonDocument()).ToList();
+            return entries;
         }
 
         public IList<IEntry> Read(FilterBy field, string value)
         {
             if (value == null)
                 return null;
-            var docs = new List<IEntry>();
-            var filter = Builders<BsonDocument>.Filter.AnyEq<BsonValue>(_filterString[(int)field], value);
-            var documents = _collection.Find(filter).ToList();
-            foreach (var document in documents)
-            {
-                docs.Add(BsonSerializer.Deserialize<Entry>(document));
-            }
-            return docs;
+            var filter = Builders<IEntry>.Filter.AnyEq<BsonValue>(_filterString[(int)field], value);
+            var entries = _collection.Find(filter).ToList();
+            return entries;
         }
 
         public void Update(string id, IEntry config)
         {
-            var filter = Builders<BsonDocument>.Filter.Eq("Id", id);
-            var update = Builders<BsonDocument>.Update.Set("Uri", config.Uri);
+            var filter = Builders<IEntry>.Filter.Eq("Id", id);
+            var update = Builders<IEntry>.Update.Set("Uri", config.Uri);
             _collection.UpdateOne(filter, update);
         }
 
         public void Update(string token, int timesClicked)
         {
-            var filter = Builders<BsonDocument>.Filter.Eq("Uri.Token", token);
-            var update = Builders<BsonDocument>.Update.Set("Uri.Clicked", timesClicked);
+            var filter = Builders<IEntry>.Filter.Eq("Uri.Token", token);
+            var update = Builders<IEntry>.Update.Set("Uri.Clicked", timesClicked);
             _collection.UpdateOne(filter, update);
         }
 
@@ -91,46 +80,35 @@ namespace AppCore.LinkStorage.Core
 
         public async Task CreateAsync(IEntry entry)
         {
-            var document = entry.ToBsonDocument();
-            await _collection.InsertOneAsync(document);
+            await _collection.InsertOneAsync(entry);
         }
 
         public async Task<IList<IEntry>> ReadAsync()
         {
-            var docs = new List<IEntry>();
-            var documents = (await _collection.FindAsync(new BsonDocument())).ToList();
-            foreach (var document in documents)
-            {
-                docs.Add(BsonSerializer.Deserialize<Entry>(document));
-            }
-            return docs;
+            var entries = (await _collection.FindAsync(new BsonDocument())).ToList();
+            return entries;
         }
 
         public async Task<IList<IEntry>> ReadAsync(FilterBy field, string value)
         {
             if (value == null)
                 return null;
-            var docs = new List<IEntry>();
-            var filter = Builders<BsonDocument>.Filter.AnyEq<BsonValue>(_filterString[(int)field], value);
-            var documents = (await _collection.FindAsync(filter)).ToList();
-            foreach (var document in documents)
-            {
-                docs.Add(BsonSerializer.Deserialize<Entry>(document));
-            }
-            return docs;
+            var filter = Builders<IEntry>.Filter.AnyEq<BsonValue>(_filterString[(int)field], value);
+            var entries = (await _collection.FindAsync(filter)).ToList();
+            return entries;
         }
 
         public async Task UpdateAsync(string id, IEntry config)
         {
-            var filter = Builders<BsonDocument>.Filter.Eq("Id", id);
-            var update = Builders<BsonDocument>.Update.Set("Uri", config.Uri);
+            var filter = Builders<IEntry>.Filter.Eq("Id", id);
+            var update = Builders<IEntry>.Update.Set("Uri", config.Uri);
             await _collection.UpdateOneAsync(filter, update);
         }
 
         public async Task UpdateAsync(string token, int timesClicked)
         {
-            var filter = Builders<BsonDocument>.Filter.Eq("Uri.Token", token);
-            var update = Builders<BsonDocument>.Update.Set("Uri.Clicked", timesClicked);
+            var filter = Builders<IEntry>.Filter.Eq("Uri.Token", token);
+            var update = Builders<IEntry>.Update.Set("Uri.Clicked", timesClicked);
             await _collection.UpdateOneAsync(filter, update);
         }
 
