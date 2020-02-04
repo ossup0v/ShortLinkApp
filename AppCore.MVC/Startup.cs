@@ -12,7 +12,6 @@ using LSCore = AppCore.LinkStorage.Core;
 using AppCore.LinkStorage.API;
 using AppCore.Main.Core;
 using AppCore.Main.API;
-using AppCore.MVC.Controllers;
 
 namespace AppCore.MVC
 {
@@ -51,9 +50,7 @@ namespace AppCore.MVC
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
-
             app.UseAuthorization();
-
 
             app.UseEndpoints(endpoints =>
             {

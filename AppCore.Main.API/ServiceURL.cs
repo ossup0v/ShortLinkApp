@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Serializers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace AppCore.Main.API
 {
     public class ServiceURI
     {
+
         public Guid Id { get; set; }
         public string FullURI { get; set; }
         public string ShortURI { get; set; }

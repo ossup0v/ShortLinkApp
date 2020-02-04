@@ -43,12 +43,12 @@ namespace AppCore.Main.Core
         public string FindFullLink(ServiceURI serviceUri)
         {
             var ctx = UserContext.GetContext();
-            var entry = _storage.Read(FilterBy.UriToken, serviceUri.Token)?.FirstOrDefault();
+            var entry = _storage.Read(Field.UriToken, serviceUri.Token)?.FirstOrDefault();
             if (entry == null)
             {
                 return null;
             }
-            _storage.Update(serviceUri.Token, entry.Uri.Clicked + 1);
+            _storage.Update(Field.UriToken, serviceUri.Token, Field.UriClicked, entry.Uri.Clicked + 1);
             var storageUri = entry?.Uri;
             var serviceResultUri = ToServiceURI(storageUri);
             var fullLink = serviceResultUri.FullURI;
@@ -82,12 +82,12 @@ namespace AppCore.Main.Core
 
         public async Task<string> FindFullLinkAsync(ServiceURI serviceUri)
         {
-            var entry = (await _storage.ReadAsync(FilterBy.UriToken, serviceUri.Token))?.FirstOrDefault();
+            var entry = (await _storage.ReadAsync(Field.UriToken, serviceUri.Token))?.FirstOrDefault();
             if (entry == null)
             {   
                 return null;
             }
-            await _storage.UpdateAsync(serviceUri.Token, entry.Uri.Clicked + 1);
+            await _storage.UpdateAsync(Field.UriToken, serviceUri.Token, Field.UriClicked, entry.Uri.Clicked + 1);
             var storageUri = entry?.Uri;
             var serviceResultUri = ToServiceURI(storageUri);
             var fullLink = serviceResultUri.FullURI;
@@ -114,7 +114,7 @@ namespace AppCore.Main.Core
             _storage.Remove();
         }
 
-        public void Remove(FilterBy filter, string value)
+        public void Remove(Field filter, string value)
         {
             _storage.Remove(filter, value);
         }

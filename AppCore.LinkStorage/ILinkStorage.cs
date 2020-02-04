@@ -6,32 +6,32 @@ namespace AppCore.LinkStorage.API
 {
     public interface ILinkStorage
     {
-        void Create(IEntry entry);
+        void Create(Entry entry);
 
-        Task CreateAsync(IEntry entry);
+        Task CreateAsync(Entry entry);
 
         /// <summary>
         /// Read all entries
         /// </summary>
         /// <returns></returns>
-        IList<IEntry> Read();
+        IList<Entry> Read();
 
-        IList<IEntry> Read(FilterBy filterBy, string value);
+        IList<Entry> Read(Field Field, string value);
 
-        Task<IList<IEntry>> ReadAsync();
+        Task<IList<Entry>> ReadAsync();
 
-        Task<IList<IEntry>> ReadAsync(FilterBy filterBy, string value);
+        Task<IList<Entry>> ReadAsync(Field Field, string value);
 
-        void Update(string id, IEntry entry);
+        void Update(string id, Entry entry);
 
-        void Update(string token, int timesClicked);
+        void Update(Field filter, object filterValue, Field updateFiled, object updateValue);
 
-        Task UpdateAsync(string id, IEntry entry);
+        Task UpdateAsync(string id, Entry entry);
 
-        Task UpdateAsync(string token, int timesClicked);
+        Task UpdateAsync(Field filterField, object filterValue, Field updateField, object updateValue);
 
         bool Remove();
 
-        bool Remove(FilterBy filterBy, string value);
+        bool Remove(Field Field, string value);
     }
 }

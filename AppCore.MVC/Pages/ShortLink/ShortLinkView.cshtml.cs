@@ -25,7 +25,7 @@ namespace AppCore.MVC
             _shortLinkService = shortLinkService;
         }
 
-        private List<(string, int)> ListShortLinks()
+        private List<(string, int)> ListShortLinks()    
         {
             return _shortLinkService.FindAllShortLinksAsync().Result;
         }

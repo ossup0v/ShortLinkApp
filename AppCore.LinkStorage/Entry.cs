@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Runtime.Serialization;
@@ -8,8 +9,8 @@ namespace AppCore.LinkStorage.API
     [Serializable]
     [BsonIgnoreExtraElements]
     [DataContract]
-    public class Entry : IEntry
-    {
+    public class Entry 
+    { 
         [BsonId]
         public ObjectId _id { get; set; }
 
@@ -21,5 +22,6 @@ namespace AppCore.LinkStorage.API
         }
 
         public StorageURI Uri { get; set; }
+
     }
 }

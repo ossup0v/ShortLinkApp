@@ -1,13 +1,14 @@
 ﻿namespace AppCore.LinkStorage.API
 {
-    public enum FilterBy
+    public enum Field
     {
         EntryId = 0,
-        UriFullURI = 1,
-        UriShortURI = 2,
-        UriToken = 3,
-        UriClicked = 4,
-        UriCreated = 5,
-        UriCreater = 6
+        Uri = 1,
+        UriFullURI = 2,
+        UriShortURI = 3,
+        UriToken = 4,
+        UriClicked = 5,
+        UriCreated = 6,
+        UriCreater = 7
     }
 }
