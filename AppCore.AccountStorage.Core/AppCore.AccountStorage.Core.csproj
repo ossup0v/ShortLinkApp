@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AppCore.UserStorage\AppCore.AccountStorage.csproj" />
+    <ProjectReference Include="..\AppCore.AccountStorage\AppCore.AccountStorage.csproj" />
   </ItemGroup>
 
 </Project>
