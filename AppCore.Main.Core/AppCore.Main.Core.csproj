@@ -5,10 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AppCore.AccountStorage\AppCore.AccountStorage.csproj" />
     <ProjectReference Include="..\AppCore.LinkStorage\AppCore.LinkStorage.csproj" />
     <ProjectReference Include="..\AppCore.Main.Defaults\AppCore.Main.Defaults.csproj" />
     <ProjectReference Include="..\AppCore.Main.UserContext\AppCore.Main.Context.csproj" />
-    <ProjectReference Include="..\AppCore.UserStorage\AppCore.AccountStorage.csproj" />
   </ItemGroup>
 
 </Project>
