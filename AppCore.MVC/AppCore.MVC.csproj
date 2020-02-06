@@ -13,7 +13,6 @@
   <ItemGroup>
     <ProjectReference Include="..\AppCore.LinkStorage.Core\AppCore.LinkStorage.Core.csproj" />
     <ProjectReference Include="..\AppCore.LinkStorage\AppCore.LinkStorage.csproj" />
-    <ProjectReference Include="..\AppCore.Main.API\AppCore.Main.csproj" />
     <ProjectReference Include="..\AppCore.Main.Core\AppCore.Main.Core.csproj" />
   </ItemGroup>
 
