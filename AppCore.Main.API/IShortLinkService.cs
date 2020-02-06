@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace AppCore.Main.API
+namespace AppCore.Main
 {
     public interface IShortLinkService
     {
@@ -13,7 +13,6 @@ namespace AppCore.Main.API
         ServiceURI ReadUri(string token);
 
         Task<ServiceURI> ReadUriAsync(string token);
-
 
         Task<string> CreateShortLinkAsync(ServiceURI ServiceUri);
 

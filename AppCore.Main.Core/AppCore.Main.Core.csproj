@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AppCore.LinkStorage\AppCore.LinkStorage.API.csproj" />
-    <ProjectReference Include="..\AppCore.Main.API\AppCore.Main.API.csproj" />
+    <ProjectReference Include="..\AppCore.LinkStorage\AppCore.LinkStorage.csproj" />
+    <ProjectReference Include="..\AppCore.Main.API\AppCore.Main.csproj" />
     <ProjectReference Include="..\AppCore.Main.Defaults\AppCore.Main.Defaults.csproj" />
     <ProjectReference Include="..\AppCore.Main.UserContext\AppCore.Main.Context.csproj" />
   </ItemGroup>

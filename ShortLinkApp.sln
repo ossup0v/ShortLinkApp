@@ -7,13 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppCore.MVC", "AppCore.MVC\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LinkStorage", "LinkStorage", "{BBCAA2BA-65FE-4EAB-864F-1902CABA386D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppCore.LinkStorage.API", "AppCore.LinkStorage\AppCore.LinkStorage.API.csproj", "{79888D52-1549-4FCD-B2B7-A2EECFC70603}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppCore.LinkStorage", "AppCore.LinkStorage\AppCore.LinkStorage.csproj", "{79888D52-1549-4FCD-B2B7-A2EECFC70603}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppCore.LinkStorage.Core", "AppCore.LinkStorage.Core\AppCore.LinkStorage.Core.csproj", "{53458967-AE03-462A-8451-2C14187D1917}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MainApp", "MainApp", "{6956295A-63F2-4CC0-A600-D14F5A0F380B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppCore.Main.API", "AppCore.Main.API\AppCore.Main.API.csproj", "{B130B40E-C1AE-4A11-B762-D7931E5B6110}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppCore.Main", "AppCore.Main.API\AppCore.Main.csproj", "{B130B40E-C1AE-4A11-B762-D7931E5B6110}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppCore.Main.Core", "AppCore.Main.Core\AppCore.Main.Core.csproj", "{3FF1DFF6-5453-4DEF-ADBA-266ABA4C51DB}"
 EndProject
@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppCore.Main.Defaults", "Ap
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserStorage", "UserStorage", "{EC864C9C-304E-4CC1-A8CF-385C6198E5AC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppCore.UserStorage.API", "AppCore.UserStorage.API\AppCore.UserStorage.API.csproj", "{F39A820A-1D78-4728-95CA-6CA213F49793}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppCore.UserStorage", "AppCore.UserStorage.API\AppCore.UserStorage.csproj", "{F39A820A-1D78-4728-95CA-6CA213F49793}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppCore.UserStorage.Core", "AppCore.UserStorage.Core\AppCore.UserStorage.Core.csproj", "{024E89F8-6E99-46BC-9A52-5070E02ADED9}"
 EndProject
@@ -31,7 +31,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storages", "Storages", "{05
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{730C4B44-BFB5-4A67-BF09-4BDE5BA41FEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppCore.Tests.Services", "AppCore.Tests.Services\AppCore.Tests.Services.csproj", "{4DA3611F-8F2E-436F-89DC-52C2DB2B9D05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppCore.Tests.Services", "AppCore.Tests.Services\AppCore.Tests.Services.csproj", "{4DA3611F-8F2E-436F-89DC-52C2DB2B9D05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

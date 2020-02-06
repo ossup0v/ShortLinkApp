@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace AppCore.LinkStorage.API
+namespace AppCore.LinkStorage
 {
     public interface ILinkStorage
     {
@@ -13,23 +13,19 @@ namespace AppCore.LinkStorage.API
         /// <returns>all entries</returns>
         IList<Entry> Read();
 
-        IList<Entry> Read(Field Field, object value);
+        IList<Entry> Read(EntryField Field, object value);
         
         /// <returns>all entries</returns>
         Task<IList<Entry>> ReadAsync();
 
-        Task<IList<Entry>> ReadAsync(Field Field, object value);
+        Task<IList<Entry>> ReadAsync(EntryField Field, object value);
 
-        void Update(string id, Entry entry);
+        void Update(EntryField filter, object filterValue, EntryField updateFiled, object updateValue);
 
-        void Update(Field filter, object filterValue, Field updateFiled, object updateValue);
-
-        Task UpdateAsync(string id, Entry entry);
-
-        Task UpdateAsync(Field filterField, object filterValue, Field updateField, object updateValue);
+        Task UpdateAsync(EntryField filterField, object filterValue, EntryField updateField, object updateValue);
 
         bool Remove();
 
-        bool Remove(Field Field, string value);
+        bool Remove(EntryField Field, object value);
     }
 }

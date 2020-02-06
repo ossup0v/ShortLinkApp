@@ -1,6 +1,6 @@
-﻿namespace AppCore.LinkStorage.API
+﻿namespace AppCore.LinkStorage
 {
-    public enum Field
+    public enum EntryField
     {
         EntryId = 0,
         Uri = 1,

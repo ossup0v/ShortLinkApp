@@ -1,5 +1,5 @@
-﻿using AppCore.LinkStorage.API;
-using AppCore.Main.API;
+﻿using AppCore.LinkStorage;
+using AppCore.Main;
 using AppCore.Main.Context;
 using AppCore.Main.Defaults;
 using System;
@@ -43,12 +43,12 @@ namespace AppCore.Main.Core
         public ServiceURI ReadUri(string token)
         {
             var ctx = UserContext.GetContext();
-            var entry = _storage.Read(Field.UriToken, token)?.FirstOrDefault();
+            var entry = _storage.Read(EntryField.UriToken, token)?.FirstOrDefault();
             if (entry == null)
             {
                 return null;
             }
-            _storage.Update(Field.UriToken, token, Field.UriClicked, entry.Uri.Clicked + 1);
+            _storage.Update(EntryField.UriToken, token, EntryField.UriClicked, entry.Uri.Clicked + 1);
             var storageUri = entry?.Uri;
             var serviceResultUri = ToServiceURI(storageUri);
             return serviceResultUri;
@@ -80,12 +80,12 @@ namespace AppCore.Main.Core
 
         public async Task<ServiceURI> ReadUriAsync(string token)
         {
-            var entry = (await _storage.ReadAsync(Field.UriToken, token))?.FirstOrDefault();
+            var entry = (await _storage.ReadAsync(EntryField.UriToken, token))?.FirstOrDefault();
             if (entry == null)
             {   
                 return null;
             }
-            await _storage.UpdateAsync(Field.UriToken, token, Field.UriClicked, entry.Uri.Clicked + 1);
+            await _storage.UpdateAsync(EntryField.UriToken, token, EntryField.UriClicked, entry.Uri.Clicked + 1);
             var storageUri = entry?.Uri;
             var serviceResultUri = ToServiceURI(storageUri);
             return serviceResultUri;
@@ -110,7 +110,7 @@ namespace AppCore.Main.Core
             _storage.Remove();
         }
 
-        public void Remove(Field filter, string value)
+        public void Remove(EntryField filter, string value)
         {
             _storage.Remove(filter, value);
         }

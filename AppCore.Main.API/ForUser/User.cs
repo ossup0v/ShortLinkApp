@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AppCore.Main.API
+namespace AppCore.Main
 {
     public class User
     {
@@ -12,5 +12,6 @@ namespace AppCore.Main.API
         public Credentials Credentials { get; set; }
         public Permissions Permitions { get; set; } = Permissions.UnregisteredUser;
         public DateTime Created { get; set; }
+        public List<string> TokensOfCreatedUries { get; set; }
     }
 }

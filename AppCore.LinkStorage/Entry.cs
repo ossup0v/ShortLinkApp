@@ -4,7 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Runtime.Serialization;
 
-namespace AppCore.LinkStorage.API
+namespace AppCore.LinkStorage
 {
     [Serializable]
     [BsonIgnoreExtraElements]

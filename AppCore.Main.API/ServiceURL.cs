@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AppCore.Main.API
+namespace AppCore.Main
 {
     public class ServiceURI
     {

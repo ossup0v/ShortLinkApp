@@ -9,9 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using LSCore = AppCore.LinkStorage.Core;
-using AppCore.LinkStorage.API;
+using AppCore.LinkStorage;
 using AppCore.Main.Core;
-using AppCore.Main.API;
+using AppCore.Main;
 
 namespace AppCore.MVC
 {

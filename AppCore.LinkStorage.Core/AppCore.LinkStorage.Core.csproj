@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AppCore.LinkStorage\AppCore.LinkStorage.API.csproj" />
+    <ProjectReference Include="..\AppCore.LinkStorage\AppCore.LinkStorage.csproj" />
   </ItemGroup>
 
 </Project>

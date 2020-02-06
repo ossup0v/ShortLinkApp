@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AppCore.Main.API;
+using AppCore.Main;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -20,11 +20,7 @@ namespace AppCore.MVC
         public IActionResult OnGet(string token)
         {
             var fullUri = _shortLinkService.ReadUriAsync(token).Result;
-            string url = "/.auth/login/aad?post_login_redirect_url="
-                + Request.Query["redirect_url"];
-
             return Redirect(fullUri.FullURI);
-
         }
     }
 }

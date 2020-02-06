@@ -1,6 +1,6 @@
-﻿using AppCore.LinkStorage.API;
+﻿using AppCore.LinkStorage;
 using LSCore = AppCore.LinkStorage.Core;
-using AppCore.Main.API;
+using AppCore.Main;
 using AppCore.Main.Core;
 using NUnit.Framework;
 using System;

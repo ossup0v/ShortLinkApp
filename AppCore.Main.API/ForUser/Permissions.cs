@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AppCore.Main.API
+namespace AppCore.Main
 {
     public enum Permissions
     {
         UnregisteredUser,
-        RegisteredUser
+        RegisteredUser,
+        Moderator,
+        Admin
     }
 }

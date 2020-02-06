@@ -4,7 +4,7 @@ using MongoDB.Driver;
 using MongoDB.Libmongocrypt;
 using System.Linq;
 using MongoDB.Bson.Serialization;
-using AppCore.LinkStorage.API;
+using AppCore.LinkStorage;
 using System;
 using System.Threading.Tasks;
 using System.ComponentModel;
@@ -52,7 +52,7 @@ namespace AppCore.LinkStorage.Core
             return entries;
         }
 
-        public IList<Entry> Read(Field field, object value)
+        public IList<Entry> Read(EntryField field, object value)
         {
             if (value == null)
                 return null;
@@ -61,18 +61,11 @@ namespace AppCore.LinkStorage.Core
             return entries;
         }
 
-        public void Update(string id, Entry config)
-        {
-            var filter = CreateEqFilter(Field.EntryId, id);
-            var update = CreateSetUpdate(Field.Uri, config.Uri);
-            _collection.UpdateOne(filter, update);
-        }
-
-        public void Update(Field filterField, object filterValue, Field updateField, object updateValue)
+        public void Update(EntryField filterField, object filterValue, EntryField updateField, object updateValue)
         {
             var filter = CreateEqFilter(filterField, filterValue);
             var update = CreateSetUpdate(updateField, updateValue);
-            _collection.UpdateOne(filter, update);
+            _collection.UpdateMany(filter, update);
         }
 
         public bool Remove()
@@ -80,14 +73,14 @@ namespace AppCore.LinkStorage.Core
             throw new NotImplementedException();
         }
 
-        public bool Remove(Field Field, string value)
+        public bool Remove(EntryField Field, object value)
         {
             throw new NotImplementedException();
         }
 
         #endregion
 
-        #region async API
+        #region Async API
 
         public async Task CreateAsync(Entry entry)
         {
@@ -100,7 +93,7 @@ namespace AppCore.LinkStorage.Core
             return entries;
         }
 
-        public async Task<IList<Entry>> ReadAsync(Field field, object value)
+        public async Task<IList<Entry>> ReadAsync(EntryField field, object value)
         {
             if (value == null)
                 return null;
@@ -109,71 +102,63 @@ namespace AppCore.LinkStorage.Core
             return entries;
         }
 
-        public async Task UpdateAsync(string id, Entry config)
-        {
-            var filter = CreateEqFilter(Field.EntryId, id);
-            var update = CreateSetUpdate(Field.Uri, config.Uri);
-            await _collection.UpdateOneAsync(filter, update);
-        }
-
-        public async Task UpdateAsync(Field filterField, object filterValue, Field updateField, object updateValue)
+        public async Task UpdateAsync(EntryField filterField, object filterValue, EntryField updateField, object updateValue)
         {
             var filter = CreateEqFilter(filterField, filterValue);
             var update = CreateSetUpdate(updateField, updateValue);
-            await _collection.UpdateOneAsync(filter, update);
+            await _collection.UpdateManyAsync(filter, update);
         }
 
         #endregion
 
-        private UpdateDefinition<Entry> CreateSetUpdate(Field Field, object value)
+        private UpdateDefinition<Entry> CreateSetUpdate(EntryField field, object value)
         {
-            switch (Field)
+            switch (field)
             {
-                case Field.EntryId:
+                case EntryField.EntryId:
                     return Builders<Entry>.Update.Set(x => x.Id, value.ToString());
-                case Field.Uri:
+                case EntryField.Uri:
                     return Builders<Entry>.Update.Set(x => x.Uri, (StorageURI)value);
-                case Field.UriFullURI:
+                case EntryField.UriFullURI:
                     return Builders<Entry>.Update.Set(x => x.Uri.FullURI, value.ToString());
-                case Field.UriShortURI:
+                case EntryField.UriShortURI:
                     return Builders<Entry>.Update.Set(x => x.Uri.ShortURI, value.ToString());
-                case Field.UriToken:
+                case EntryField.UriToken:
                     return Builders<Entry>.Update.Set(x => x.Uri.Token, value.ToString());
-                case Field.UriClicked:
+                case EntryField.UriClicked:
                     return Builders<Entry>.Update.Set(x => x.Uri.Clicked, (int)value);
-                case Field.UriCreated:
+                case EntryField.UriCreated:
                     return Builders<Entry>.Update.Set(x => x.Uri.Created, (DateTime)value);
-                case Field.UriCreater:
+                case EntryField.UriCreater:
                     return Builders<Entry>.Update.Set(x => x.Uri.Creater, value.ToString());
                 default:
                     throw new InvalidEnumArgumentException();
             }
         }
 
-        private FilterDefinition<Entry> CreateEqFilter(Field Field, object value)
+        private FilterDefinition<Entry> CreateEqFilter(EntryField field, object value)
         {
-            switch (Field)
+            switch (field)
             {
-                case Field.EntryId:
+                case EntryField.EntryId:
                     return Builders<Entry>.Filter.Eq(x => x.Id, value.ToString());
-                case Field.Uri:
+                case EntryField.Uri:
                     return Builders<Entry>.Filter.Eq(x => x.Uri, (StorageURI)value);
-                case Field.UriFullURI:
+                case EntryField.UriFullURI:
                     return Builders<Entry>.Filter.Eq(x => x.Uri.FullURI, value.ToString());
-                case Field.UriShortURI:
+                case EntryField.UriShortURI:
                     return Builders<Entry>.Filter.Eq(x => x.Uri.ShortURI, value.ToString());
-                case Field.UriToken:
+                case EntryField.UriToken:
                     return Builders<Entry>.Filter.Eq(x => x.Uri.Token, value.ToString());
-                case Field.UriClicked:
+                case EntryField.UriClicked:
                     return Builders<Entry>.Filter.Eq(x => x.Uri.Clicked, (int)value);
-                case Field.UriCreated:
+                case EntryField.UriCreated:
                     return Builders<Entry>.Filter.Eq(x => x.Uri.Created, (DateTime)value);
-                case Field.UriCreater:
+                case EntryField.UriCreater:
                     return Builders<Entry>.Filter.Eq(x => x.Uri.Creater, value.ToString());
                 default:
                     throw new InvalidEnumArgumentException();
             }
-
         }
 
         private void Configure()
