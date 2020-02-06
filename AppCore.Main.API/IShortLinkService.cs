@@ -10,7 +10,6 @@ namespace AppCore.Main.API
         /// <returns>short link</returns>
         string CreateShortLink(ServiceURI ServiceUri);
 
-        /// <returns>Full link</returns>
         ServiceURI ReadUri(string token);
 
         Task<ServiceURI> ReadUriAsync(string token);
@@ -18,10 +17,10 @@ namespace AppCore.Main.API
 
         Task<string> CreateShortLinkAsync(ServiceURI ServiceUri);
 
-        /// <returns>all links</returns>
+        /// <returns>all uries</returns>
         List<ServiceURI> ReadUri();
 
-        /// <returns>all links</returns>
+        /// <returns>all uries</returns>
         Task<List<ServiceURI>> ReadUriAsync();
     }
 }
