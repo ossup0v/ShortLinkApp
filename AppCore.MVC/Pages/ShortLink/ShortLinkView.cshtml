@@ -16,14 +16,16 @@
 
     <table class="table table-bordered table-responsive table-hover">
         <tr>
-            <th>Employee Id </th>
+            <th>Full uri</th>
+            <th>Short uri</th>
             <th>Clicked</th>
         </tr>
-        @foreach (var entry in Model.ListOfLinkAndClicked)
+        @foreach (var entry in Model.Uries)
         {
             <tr>
-                <td>@entry.Item1</td>
-                <td>@entry.Item2</td>
+                <td>@entry.FullURI</td>
+                <td>@entry.ShortURI</td>
+                <td>@entry.Clicked</td>
             </tr>
         }
     </table>
@@ -49,11 +51,11 @@
         });
     </script>
 
-    <div class="СontainerFindFullLink">
+    <div class="СontainerReadUri">
         <input type="text" placeholder="Type token" id="userToken">
-        <button id="FindFullLink">Find full link</button>
+        <button id="ReadUri">Find full link</button>
         <div>
-            <a class="FindFullLinkResult" href="url" id="FindFullLinkResult"></a>
+            <a class="ReadUriResult" href="url" id="ReadUriResult"></a>
         </div>
     </div>
 
@@ -64,12 +66,12 @@
                 cache: false
             });
 
-            $("#FindFullLink").click(function () {
+            $("#ReadUri").click(function () {
                 var tempString = $("#userToken").val();
-                var result = "https://localhost:44369/FindFullLink?token=" + tempString.replace(/\s+/g, '');
-                $("#FindFullLinkResult").load(result);
+                var result = "https://localhost:44369/ReadUri?token=" + tempString.replace(/\s+/g, '');
+                $("#ReadUriResult").load(result);
                 $.get(result, function (data) {
-                    $(".FindFullLinkResult").attr("href", data);
+                    $(".ReadUriResult").attr("href", data);
                 });
             });
         });

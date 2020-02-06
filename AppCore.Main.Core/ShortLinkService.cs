@@ -40,29 +40,27 @@ namespace AppCore.Main.Core
             return storageUri.ShortURI;
         }
 
-        public string FindFullLink(ServiceURI serviceUri)
+        public ServiceURI ReadUri(string token)
         {
             var ctx = UserContext.GetContext();
-            var entry = _storage.Read(Field.UriToken, serviceUri.Token)?.FirstOrDefault();
+            var entry = _storage.Read(Field.UriToken, token)?.FirstOrDefault();
             if (entry == null)
             {
                 return null;
             }
-            _storage.Update(Field.UriToken, serviceUri.Token, Field.UriClicked, entry.Uri.Clicked + 1);
+            _storage.Update(Field.UriToken, token, Field.UriClicked, entry.Uri.Clicked + 1);
             var storageUri = entry?.Uri;
             var serviceResultUri = ToServiceURI(storageUri);
-            var fullLink = serviceResultUri.FullURI;
-            return fullLink;
+            return serviceResultUri;
         }
 
-        public List<(string, int)> FindAllShortLinks()
+        public List<ServiceURI> ReadUri()
         {
             var entries = _storage.Read();
-            var result = new List<(string, int)>();
+            var result = new List<ServiceURI>();
             foreach (var entry in entries)
             {
-                var storageUri = entry.Uri;
-                result.Add((storageUri.ShortURI, storageUri.Clicked));
+                result.Add(ToServiceURI(entry.Uri));
             }
             return result;
         }
@@ -80,28 +78,26 @@ namespace AppCore.Main.Core
             return storageUri.ShortURI;
         }
 
-        public async Task<string> FindFullLinkAsync(ServiceURI serviceUri)
+        public async Task<ServiceURI> ReadUriAsync(string token)
         {
-            var entry = (await _storage.ReadAsync(Field.UriToken, serviceUri.Token))?.FirstOrDefault();
+            var entry = (await _storage.ReadAsync(Field.UriToken, token))?.FirstOrDefault();
             if (entry == null)
             {   
                 return null;
             }
-            await _storage.UpdateAsync(Field.UriToken, serviceUri.Token, Field.UriClicked, entry.Uri.Clicked + 1);
+            await _storage.UpdateAsync(Field.UriToken, token, Field.UriClicked, entry.Uri.Clicked + 1);
             var storageUri = entry?.Uri;
             var serviceResultUri = ToServiceURI(storageUri);
-            var fullLink = serviceResultUri.FullURI;
-            return fullLink;
+            return serviceResultUri;
         }
 
-        public async Task<List<(string, int)>> FindAllShortLinksAsync()
+        public async Task<List<ServiceURI>> ReadUriAsync()
         {
             var entries = await _storage.ReadAsync();
-            var result = new List<(string, int)>();
+            var result = new List<ServiceURI>();
             foreach (var entry in entries)
             {
-                var storageUri = entry.Uri;
-                result.Add((storageUri.ShortURI, storageUri.Clicked));
+                result.Add(ToServiceURI(entry.Uri));
             }
             return result;
         }

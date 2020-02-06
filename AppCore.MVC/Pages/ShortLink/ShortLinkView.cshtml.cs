@@ -12,22 +12,11 @@ namespace AppCore.MVC
     public class ShortLinkViewModel : PageModel
     {
         private IShortLinkService _shortLinkService;
-        public List<(string, int)> ListOfLinkAndClicked
-        {
-            get
-            {
-                return ListShortLinks();
-            }
-        }
+        public List<ServiceURI> Uries => _shortLinkService.ReadUriAsync().Result;
 
         public ShortLinkViewModel(IShortLinkService shortLinkService)
         {
             _shortLinkService = shortLinkService;
-        }
-
-        private List<(string, int)> ListShortLinks()    
-        {
-            return _shortLinkService.FindAllShortLinksAsync().Result;
         }
 
         public void OnGet()

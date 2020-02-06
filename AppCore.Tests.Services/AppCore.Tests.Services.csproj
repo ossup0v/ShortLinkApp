@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="3.12.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AppCore.LinkStorage.Core\AppCore.LinkStorage.Core.csproj" />
+    <ProjectReference Include="..\AppCore.LinkStorage\AppCore.LinkStorage.API.csproj" />
+    <ProjectReference Include="..\AppCore.Main.API\AppCore.Main.API.csproj" />
+    <ProjectReference Include="..\AppCore.Main.Core\AppCore.Main.Core.csproj" />
+  </ItemGroup>
+
+</Project>

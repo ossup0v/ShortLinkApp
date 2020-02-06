@@ -6,26 +6,22 @@ namespace AppCore.Main.API
 {
     public interface IShortLinkService
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="shortLink"></param>
-        /// <returns>Full link</returns>
-        string FindFullLink(ServiceURI ServiceUri);
 
-        Task<string> FindFullLinkAsync(ServiceURI ServiceUri);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="fullLink"></param>
         /// <returns>short link</returns>
         string CreateShortLink(ServiceURI ServiceUri);
 
+        /// <returns>Full link</returns>
+        ServiceURI ReadUri(string token);
+
+        Task<ServiceURI> ReadUriAsync(string token);
+
+
         Task<string> CreateShortLinkAsync(ServiceURI ServiceUri);
 
-        List<(string, int)> FindAllShortLinks();
+        /// <returns>all links</returns>
+        List<ServiceURI> ReadUri();
 
-        Task<List<(string, int)>> FindAllShortLinksAsync();
+        /// <returns>all links</returns>
+        Task<List<ServiceURI>> ReadUriAsync();
     }
 }

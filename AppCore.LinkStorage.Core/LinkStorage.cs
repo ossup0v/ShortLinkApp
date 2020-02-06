@@ -34,6 +34,13 @@ namespace AppCore.LinkStorage.Core
             { _checkCollection = value; }
         }
 
+        public LinkStorage()
+        {
+            Configure();
+        }
+
+        #region API
+
         public void Create(Entry entry)
         {
             _collection.InsertOne(entry);
@@ -45,7 +52,7 @@ namespace AppCore.LinkStorage.Core
             return entries;
         }
 
-        public IList<Entry> Read(Field field, string value)
+        public IList<Entry> Read(Field field, object value)
         {
             if (value == null)
                 return null;
@@ -78,6 +85,10 @@ namespace AppCore.LinkStorage.Core
             throw new NotImplementedException();
         }
 
+        #endregion
+
+        #region async API
+
         public async Task CreateAsync(Entry entry)
         {
             await _collection.InsertOneAsync(entry);
@@ -89,7 +100,7 @@ namespace AppCore.LinkStorage.Core
             return entries;
         }
 
-        public async Task<IList<Entry>> ReadAsync(Field field, string value)
+        public async Task<IList<Entry>> ReadAsync(Field field, object value)
         {
             if (value == null)
                 return null;
@@ -112,10 +123,7 @@ namespace AppCore.LinkStorage.Core
             await _collection.UpdateOneAsync(filter, update);
         }
 
-        public LinkStorage()
-        {
-            Configure();
-        }
+        #endregion
 
         private UpdateDefinition<Entry> CreateSetUpdate(Field Field, object value)
         {

@@ -9,7 +9,6 @@ namespace AppCore.Main.API
 {
     public class ServiceURI
     {
-
         public Guid Id { get; set; }
         public string FullURI { get; set; }
         public string ShortURI { get; set; }

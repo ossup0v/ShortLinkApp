@@ -19,11 +19,11 @@ namespace AppCore.MVC
 
         public IActionResult OnGet(string token)
         {
-            var fullUri = _shortLinkService.FindFullLinkAsync(new ServiceURI { Token = token }).Result;
+            var fullUri = _shortLinkService.ReadUriAsync(token).Result;
             string url = "/.auth/login/aad?post_login_redirect_url="
                 + Request.Query["redirect_url"];
 
-            return Redirect(fullUri);
+            return Redirect(fullUri.FullURI);
 
         }
     }

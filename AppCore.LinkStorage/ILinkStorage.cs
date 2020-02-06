@@ -10,17 +10,15 @@ namespace AppCore.LinkStorage.API
 
         Task CreateAsync(Entry entry);
 
-        /// <summary>
-        /// Read all entries
-        /// </summary>
-        /// <returns></returns>
+        /// <returns>all entries</returns>
         IList<Entry> Read();
 
-        IList<Entry> Read(Field Field, string value);
-
+        IList<Entry> Read(Field Field, object value);
+        
+        /// <returns>all entries</returns>
         Task<IList<Entry>> ReadAsync();
 
-        Task<IList<Entry>> ReadAsync(Field Field, string value);
+        Task<IList<Entry>> ReadAsync(Field Field, object value);
 
         void Update(string id, Entry entry);
 
